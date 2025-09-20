@@ -29,7 +29,7 @@ const projects: Project[] = [
       "Portafolio web creado con React, TypeScript y Vite. Estilizado con TailwindCSS y animaciones fluidas con Framer Motion.",
     tech: ["React", "TypeScript", "Vite", "Tailwind", "Framer Motion"],
     demo: "#hero",
-    code: "https://github.com/tuusuario/portfolio",
+    code: "https://github.com/walther-fs/portfolio-web",
     current: true,
     images: [hero, about, contact],
   },
