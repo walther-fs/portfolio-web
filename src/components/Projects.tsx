@@ -38,7 +38,7 @@ const projects: Project[] = [
     description:
       "Aplicación de gestión de tareas desarrollada con React, JavaScript y Vite. Estilizada con Bootstrap y pruebas implementadas con Jest.",
     tech: ["React", "JavaScript", "Vite", "Bootstrap", "Jest"],
-    demo: "https://tusitio.com/task-manager",
+    demo: "https://task-manager-phi-virid.vercel.app/",
     code: "https://github.com/walther-fs/task-manager",
     current: false,
     images: [tm1, tm2, tm3, tm4, tm5, tm6],
