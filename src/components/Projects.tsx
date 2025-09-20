@@ -1,6 +1,17 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+import hero from "../assets/portfolio/hero.webp";
+import about from "../assets/portfolio/about.webp";
+import contact from "../assets/portfolio/contact.webp";
+
+import tm1 from "../assets/task-manager/tm-1.webp";
+import tm2 from "../assets/task-manager/tm-2.webp";
+import tm3 from "../assets/task-manager/tm-3.webp";
+import tm4 from "../assets/task-manager/tm-4.webp";
+import tm5 from "../assets/task-manager/tm-5.webp";
+import tm6 from "../assets/task-manager/tm-6.webp";
+
 interface Project {
   title: string;
   description: string;
@@ -20,11 +31,7 @@ const projects: Project[] = [
     demo: "#hero",
     code: "https://github.com/tuusuario/portfolio",
     current: true,
-    images: [
-      "/src/assets/portfolio/hero.webp",
-      "/src/assets/portfolio/about.webp",
-      "/src/assets/portfolio/contact.webp",
-    ],
+    images: [hero, about, contact],
   },
   {
     title: "Task Manager",
@@ -34,14 +41,7 @@ const projects: Project[] = [
     demo: "https://tusitio.com/task-manager",
     code: "https://github.com/walther-fs/task-manager",
     current: false,
-    images: [
-      "/src/assets/task-manager/tm-1.webp",
-      "/src/assets/task-manager/tm-2.webp",
-      "/src/assets/task-manager/tm-3.webp",
-      "/src/assets/task-manager/tm-4.webp",
-      "/src/assets/task-manager/tm-5.webp",
-      "/src/assets/task-manager/tm-6.webp",
-    ],
+    images: [tm1, tm2, tm3, tm4, tm5, tm6],
   },
   {
     title: "E-commerce Demo",
@@ -50,11 +50,7 @@ const projects: Project[] = [
     demo: "https://tusitio.com/ecommerce",
     code: "https://github.com/tuusuario/ecommerce",
     current: false,
-    images: [
-      "/src/assets/ecommerce/ecommerce-1.webp",
-      "/src/assets/ecommerce/ecommerce-2.webp",
-      "/src/assets/ecommerce/ecommerce-3.webp",
-    ],
+    images: [],
   },
 ];
 
