@@ -95,8 +95,8 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               Soy un desarrollador{" "}
-              <strong className="text-cyan-400">Frontend</strong> con formación
-              en{" "}
+              <strong className="text-cyan-400">Frontend </strong>
+              con formación en{" "}
               <strong className="text-teal-400">Desarrollo de Software</strong>.
             </motion.p>
             <motion.p

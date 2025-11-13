@@ -9,22 +9,47 @@ import {
   ListboxOptions,
   ListboxOption,
 } from "@headlessui/react";
+import toast from "react-hot-toast";
 
 const subjects = ["Asunto", "Oferta de trabajo", "Consulta", "Otro"];
 
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
-  const [status, setStatus] = useState("");
   const [selectedSubject, setSelectedSubject] = useState(subjects[0]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedSubject === "Asunto") {
-      setStatus("⚠️ Debes seleccionar un asunto antes de enviar.");
+    if (!form.current) return;
+    const name = form.current.from_name.value.trim();
+    const email = form.current.from_email.value.trim();
+    const messageValue = message.trim();
+    if (!name) {
+      toast.error("Por favor, ingresa tu nombre.");
       return;
     }
+    if (!email) {
+      toast.error("Por favor, ingresa tu correo electrónico.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Ingresa un correo válido.");
+      return;
+    }
+    if (selectedSubject === "Asunto") {
+      toast.error("Debes seleccionar un asunto antes de enviar.");
+      return;
+    }
+    if (!messageValue) {
+      toast.error("El mensaje no puede estar vacío.");
+      return;
+    }
+    const hiddenSubject = form.current.querySelector<HTMLInputElement>(
+      "input[name='subject']"
+    );
+    if (hiddenSubject) hiddenSubject.value = selectedSubject;
     if (form.current) {
       const hiddenSubject = form.current.querySelector<HTMLInputElement>(
         "input[name='subject']"
@@ -39,13 +64,40 @@ export default function Contact() {
           "YgAfcz2tSDO98N_g5"
         )
         .then(() => {
-          setStatus("✅ Mensaje enviado con éxito. Te responderé pronto.");
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } max-w-md w-full bg-gray-900 text-gray-100 shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-cyan-500/30`}
+            >
+              <div className="flex-1 w-0 p-4">
+                <div className="flex items-start">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-cyan-400">
+                      Mensaje enviado con éxito
+                    </p>
+                    <p className="mt-1 text-sm text-gray-300">
+                      Gracias por tu mensaje. Te responderé pronto.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex border-l border-gray-800">
+                <button
+                  onClick={() => toast.dismiss(t.id)}
+                  className="w-full border border-transparent rounded-none rounded-r-xl p-4 flex items-center justify-center text-sm font-medium text-cyan-400 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 cursor-pointer"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          ));
           form.current?.reset();
           setMessage("");
           setSelectedSubject(subjects[0]);
         })
         .catch(() => {
-          setStatus("❌ Hubo un error al enviar. Intenta nuevamente.");
+          toast.error("Hubo un error al enviar. Intenta nuevamente.");
         })
         .finally(() => setLoading(false));
     }
@@ -71,6 +123,7 @@ export default function Contact() {
         <motion.form
           ref={form}
           onSubmit={sendEmail}
+          noValidate
           aria-describedby="form-status"
           className="relative bg-gradient-to-br from-gray-900/70 to-gray-800/40 backdrop-blur-xl rounded-2xl shadow-lg border border-cyan-500/30 p-8 space-y-6 overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
@@ -220,27 +273,12 @@ export default function Contact() {
           ${
             loading
               ? "bg-gray-600 text-gray-300 cursor-not-allowed"
-              : "bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500"
+              : "bg-gradient-to-r from-cyan-500 to-violet-600 text-white hover:from-cyan-400 hover:to-violet-500 cursor-pointer"
           }`}
           >
             {loading ? "Enviando..." : "Enviar mensaje"}
           </button>
         </motion.form>
-        {status && (
-          <p
-            id="form-status"
-            role="status"
-            className={`text-center mt-4 text-sm ${
-              status.includes("✅")
-                ? "text-green-400"
-                : status.includes("❌")
-                ? "text-red-400"
-                : "text-yellow-400"
-            }`}
-          >
-            {status}
-          </p>
-        )}
       </div>
     </section>
   );
