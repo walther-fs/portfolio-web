@@ -28,7 +28,7 @@ function App() {
       <Toaster
         position={isMobile ? "top-center" : "bottom-center"}
         reverseOrder={isMobile}
-        containerStyle={isMobile ? { top: 60 } : { bottom: 110 }}
+        containerStyle={isMobile ? { top: 70 } : { bottom: 110 }}
         toastOptions={{
           duration: 5000,
           style: {
