@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, easeOut } from "framer-motion";
 import { FaJava, FaChevronDown } from "react-icons/fa6";
 import { DiMsqlServer } from "react-icons/di";
+import { useState } from "react";
 import {
   SiHtml5,
   SiCss3,
@@ -68,6 +69,11 @@ const faqs = [
 ];
 
 export default function About() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggle = (idx: number) => {
+    setActiveIndex((current) => (current === idx ? null : idx));
+  };
   return (
     <section
       id="about"
@@ -76,23 +82,32 @@ export default function About() {
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <motion.article
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          viewport={{ once: false, amount: 0.4 }}
         >
-          <h2
+          <motion.h2
             id="about-title"
             className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              type: "spring",
+              bounce: 0.4,
+            }}
+            viewport={{ once: false, amount: 0.6 }}
           >
             Sobre mí
-          </h2>
+          </motion.h2>
           <div className="space-y-6 text-gray-300 leading-relaxed text-lg mb-10">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: false, amount: 0.4 }}
             >
               Soy un desarrollador{" "}
               <strong className="text-cyan-400">Frontend </strong>
@@ -102,8 +117,8 @@ export default function About() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: false, amount: 0.4 }}
             >
               Me apasiona idear y construir interfaces para sitios y
               aplicaciones Web mediante{" "}
@@ -115,8 +130,8 @@ export default function About() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: false, amount: 0.4 }}
             >
               Mi objetivo es seguir creciendo constantemente como desarrollador
               y contribuir en proyectos que impacten positivamente en las
@@ -125,12 +140,11 @@ export default function About() {
           </div>
         </motion.article>
         <motion.section
-          aria-labelledby="skills-title"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mt-8 md:mt-0"
+          viewport={{ once: false, amount: 0.4 }}
+          className="relative mt-8 md:mt-0 self-start"
         >
           <div className="rounded-2xl p-[1px] bg-gradient-to-r from-cyan-500/35 via-zinc-700/40 to-violet-500/35">
             <div className="bg-gradient-to-br from-gray-900/70 to-gray-800/40 backdrop-blur-xl rounded-2xl shadow-lg border border-cyan-500/30 p-6 relative overflow-hidden">
@@ -142,41 +156,37 @@ export default function About() {
                 Mis Habilidades
               </h3>
               <ul
-                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+                className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
                 role="list"
               >
                 {skills.map(({ Icon, name, iconClass }, idx) => (
                   <motion.li
                     key={name}
-                    role="listitem"
-                    aria-label={`Habilidad en ${name}`}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: idx * 0.05,
-                      ease: "easeOut",
-                    }}
-                    className={`group flex items-center justify-center gap-2 py-6 text-gray-300 transition duration-300
-                                ${
-                                  idx < skills.length - 4
-                                    ? "border-b border-gray-700"
-                                    : ""
-                                } 
-                                ${
-                                  (idx + 1) % 4 !== 0
-                                    ? "border-r border-gray-700"
-                                    : ""
-                                }`}
+                    className={[
+                      "group flex items-center justify-center gap-2 py-6 text-gray-300 transition duration-300",
+                      idx % 2 === 0 ? "border-r border-gray-700" : "",
+                      idx < skills.length - 2 ? "border-b border-gray-700" : "",
+                      (idx + 1) % 3 !== 0
+                        ? "lg:border-r lg:border-gray-700"
+                        : "lg:border-r-0",
+                      idx < skills.length - 3
+                        ? "lg:border-b lg:border-gray-700"
+                        : "lg:border-b-0",
+                      (idx + 1) % 4 !== 0
+                        ? "xl:border-r xl:border-gray-700"
+                        : "xl:border-r-0",
+                      idx < skills.length - 4
+                        ? "xl:border-b xl:border-gray-700"
+                        : "xl:border-b-0",
+                    ].join(" ")}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: idx * 0.05 }}
+                    viewport={{ once: false, amount: 0.4 }}
+                    whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Icon
-                      className={`w-7 h-7 ${iconClass} transition-transform duration-300 group-hover:scale-110`}
-                      role="img"
-                      aria-hidden="false"
-                      focusable="false"
-                      title={name}
-                    />
+                    <Icon className={`w-7 h-7 ${iconClass}`} />
                     <span className="text-sm font-medium">{name}</span>
                   </motion.li>
                 ))}
@@ -188,38 +198,50 @@ export default function About() {
           aria-labelledby="faq-title"
           initial={{ opacity: 0, scale: 0.95, y: 40 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          viewport={{ once: false, amount: 0.4 }}
           className="col-span-1 md:col-span-2"
         >
-          <h3
+          <motion.h3
             id="faq-title"
             className="text-2xl font-semibold mb-6 text-cyan-400"
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              type: "spring",
+              bounce: 0.4,
+            }}
+            viewport={{ once: false, amount: 0.6 }}
           >
             Preguntas Frecuentes
-          </h3>
+          </motion.h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {faqs.map((faq, idx) => (
-              <Disclosure
-                key={idx}
-                as="div"
-                className="border-b border-gray-700"
-              >
-                {({ open }) => (
+            {faqs.map((faq, idx) => {
+              const isOpen = activeIndex === idx;
+              return (
+                <Disclosure
+                  key={idx}
+                  as="div"
+                  className="border-b border-gray-700"
+                >
                   <>
                     <DisclosureButton
-                      className="group flex w-full justify-between items-center text-left text-gray-200 hover:text-cyan-400 font-medium py-3"
-                      aria-expanded={open}
+                      onClick={() => toggle(idx)}
+                      className="group flex w-full justify-between items-center text-left text-gray-200 hover:text-cyan-400 font-medium py-3 cursor-pointer"
+                      aria-expanded={isOpen}
                       aria-controls={`faq-panel-${idx}`}
                     >
                       {faq.question}
                       <FaChevronDown
-                        className="size-5 transition-transform group-data-[open]:rotate-180"
-                        aria-hidden="true"
+                        className={`size-5 transition-transform ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
                       />
                     </DisclosureButton>
                     <AnimatePresence initial={false}>
-                      {open && (
+                      {isOpen && (
                         <DisclosurePanel
                           static
                           id={`faq-panel-${idx}`}
@@ -229,7 +251,7 @@ export default function About() {
                             initial={{ opacity: 0, y: -16 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -16 }}
-                            transition={{ duration: 0.25, ease: easeOut }}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
                             className="pb-4 text-gray-400 text-sm leading-relaxed"
                           >
                             {faq.answer}
@@ -238,9 +260,9 @@ export default function About() {
                       )}
                     </AnimatePresence>
                   </>
-                )}
-              </Disclosure>
-            ))}
+                </Disclosure>
+              );
+            })}
           </div>
         </motion.section>
       </div>

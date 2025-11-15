@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { GiSharpSmile } from "react-icons/gi";
+import { FaWhatsapp } from "react-icons/fa6";
+import { HiOutlineMail } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useActiveSection } from "../hooks/useActiveSection";
 
@@ -107,38 +109,68 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
           >
-            <ul className="flex flex-col gap-4 p-6 font-medium text-gray-200 relative">
-              {links.map((link) => (
-                <li key={link.id} className="relative">
-                  <a
-                    href={`#${link.id}`}
-                    onClick={() => toggleMenu()}
-                    className={`pb-1 transition ${
-                      active === link.id
-                        ? "text-cyan-400"
-                        : "hover:text-cyan-400"
-                    }`}
-                    aria-current={active === link.id ? "page" : undefined}
-                  >
-                    {link.label}
-                  </a>
-                  {active === link.id && (
-                    <motion.span
-                      layoutId="underline-mobile"
-                      className="absolute left-0 -bottom-0.5 w-full h-[2px] bg-cyan-400 rounded"
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    />
-                  )}
-                </li>
-              ))}
-            </ul>
+            {/* Título */}
+            <p className="text-center text-gray-300 font-medium tracking-wide mt-4">
+              Contáctame
+            </p>
+
+            {/* ÍCONOS CON TEXTO */}
+            <div className="flex justify-center gap-10 p-8">
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/51XXXXXXXXX"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={toggleMenu}
+                aria-label="Ir a WhatsApp"
+                className="group flex flex-col items-center gap-2"
+              >
+                <div
+                  className="relative flex items-center justify-center w-12 h-12 
+                   rounded-xl bg-white/5 backdrop-blur-md border border-cyan-500/20
+                   shadow-[0_0_10px_rgba(6,182,212,0.15)]
+                   transition transform group-hover:scale-110"
+                >
+                  <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 opacity-0 group-hover:opacity-100 transition" />
+                  <FaWhatsapp className="text-xl text-cyan-400 group-hover:text-cyan-300 transition" />
+                </div>
+                <span className="text-xs text-gray-400 group-hover:text-gray-300 transition">
+                  WhatsApp
+                </span>
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:tuemail@example.com"
+                onClick={toggleMenu}
+                aria-label="Enviar correo"
+                className="group flex flex-col items-center gap-2"
+              >
+                <div
+                  className="relative flex items-center justify-center w-12 h-12 
+                   rounded-xl bg-white/5 backdrop-blur-md border border-violet-500/20
+                   shadow-[0_0_10px_rgba(139,92,246,0.15)]
+                   transition transform group-hover:scale-110"
+                >
+                  <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition" />
+                  <HiOutlineMail className="text-xl text-violet-400 group-hover:text-violet-300 transition" />
+                </div>
+                <span className="text-xs text-gray-400 group-hover:text-gray-300 transition">
+                  Email
+                </span>
+              </a>
+            </div>
+
+            {/* BOTÓN DESCARGAR CV */}
             <a
               href="/CV-Walther-Flores.pdf"
               download
+              onClick={toggleMenu}
               aria-label="Descargar currículum de Walther Flores en PDF"
-              className="block md:hidden bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 
-                          text-white px-4 py-2 rounded-lg shadow hover:opacity-90 
-                          transition text-center mx-6 mb-6 transform hover:scale-105 animate-pulse-slow"
+              className="block bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 
+               text-white px-4 py-3 rounded-lg shadow-lg text-center mx-6 mb-6 
+               hover:shadow-[0_0_10px_4px_rgba(6,182,212,0.6),0_0_20px_6px_rgba(16,185,129,0.5)] 
+               transition transform hover:scale-105 animate-pulse-slow"
             >
               Descargar CV
             </a>

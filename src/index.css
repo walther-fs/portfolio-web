@@ -50,6 +50,7 @@ button:focus-visible {
   border-radius: 6px;
   transition: outline 0.2s ease-in-out;
 }
+
 @keyframes enter {
   0% {
     opacity: 0;

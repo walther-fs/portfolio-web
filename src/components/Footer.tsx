@@ -5,9 +5,8 @@ export default function Footer() {
       role="contentinfo"
     >
       <p className="text-sm text-gray-400">
-        © {new Date().getFullYear()}{" "}
-        <span className="font-medium text-gray-300">Walther Flores</span> ·{" "}
-        <span lang="es">Todos los derechos reservados</span>
+        © {new Date().getFullYear()} Walther Flores. Todos los derechos
+        reservados.
       </p>
     </footer>
   );

@@ -26,7 +26,7 @@ export default function ScrollToTop() {
             key="scroll-to-top"
             onClick={scrollToTop}
             aria-label="Volver al inicio de la página"
-            className="fixed bottom-6 right-6 p-3 rounded-full shadow-lg cursor-pointer 
+            className="fixed bottom-15 right-6 p-3 rounded-full shadow-lg cursor-pointer 
                         bg-gradient-to-r from-cyan-500 to-violet-600 text-white
                         hover:from-cyan-400 hover:to-violet-500 
                         transition-transform hover:scale-110 animate-pulse-slow 

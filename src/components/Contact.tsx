@@ -64,34 +64,39 @@ export default function Contact() {
           "YgAfcz2tSDO98N_g5"
         )
         .then(() => {
-          toast.custom((t) => (
-            <div
-              className={`${
-                t.visible ? "animate-enter" : "animate-leave"
-              } max-w-md w-full bg-gray-900 text-gray-100 shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-cyan-500/30`}
-            >
-              <div className="flex-1 w-0 p-4">
-                <div className="flex items-start">
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-cyan-400">
-                      Mensaje enviado con éxito
-                    </p>
-                    <p className="mt-1 text-sm text-gray-300">
-                      Gracias por tu mensaje. Te responderé pronto.
-                    </p>
+          toast.custom(
+            (t) => (
+              <div
+                className={`${
+                  t.visible ? "animate-enter" : "animate-leave"
+                } max-w-md w-full bg-gray-900 text-gray-100 shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-cyan-500/30`}
+              >
+                <div className="flex-1 w-0 p-4">
+                  <div className="flex items-start">
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-cyan-400">
+                        Mensaje enviado con éxito
+                      </p>
+                      <p className="mt-1 text-sm text-gray-300">
+                        Gracias por tu mensaje. Te responderé pronto.
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div className="flex border-l border-gray-800">
+                  <button
+                    onClick={() => toast.dismiss(t.id)}
+                    className="w-full border border-transparent rounded-none rounded-r-xl p-4 flex items-center justify-center text-sm font-medium text-cyan-400 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 cursor-pointer"
+                  >
+                    Cerrar
+                  </button>
+                </div>
               </div>
-              <div className="flex border-l border-gray-800">
-                <button
-                  onClick={() => toast.dismiss(t.id)}
-                  className="w-full border border-transparent rounded-none rounded-r-xl p-4 flex items-center justify-center text-sm font-medium text-cyan-400 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 cursor-pointer"
-                >
-                  Cerrar
-                </button>
-              </div>
-            </div>
-          ));
+            ),
+            {
+              position: "top-center", // 🔥 solo este toast sube arriba
+            }
+          );
           form.current?.reset();
           setMessage("");
           setSelectedSubject(subjects[0]);
@@ -143,7 +148,7 @@ export default function Contact() {
             required
             autoComplete="name"
             className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 
-                        focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition placeholder-gray-400"
+                        focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
           />
           <label htmlFor="from_email" className="sr-only">
             Correo electrónico
@@ -156,7 +161,7 @@ export default function Contact() {
             required
             autoComplete="email"
             className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 
-                        focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition placeholder-gray-400"
+                        focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
           />
           <label htmlFor="company" className="sr-only">
             Empresa
@@ -168,7 +173,7 @@ export default function Contact() {
             placeholder="Empresa (opcional)"
             autoComplete="organization"
             className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 
-                        focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition placeholder-gray-400"
+                        focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
           />
           <div>
             <label htmlFor="subject" className="sr-only">
