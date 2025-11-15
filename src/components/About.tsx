@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, easeOut } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaJava, FaChevronDown } from "react-icons/fa6";
 import { DiMsqlServer } from "react-icons/di";
 import { useState } from "react";
