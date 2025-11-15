@@ -113,7 +113,7 @@ export default function Header() {
               >
                 <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md border border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.15)] transition transform group-hover:scale-110">
                   <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 opacity-0 group-hover:opacity-100 transition" />
-                  <FaWhatsapp className="text-xl text-cyan-400 group-hover:text-cyan-300 transition" />
+                  <FaWhatsapp className="text-xl text-emerald-400 group-hover:text-emerald-300 transition" />
                 </div>
                 <span className="text-xs text-gray-400 group-hover:text-gray-300 transition">
                   WhatsApp
@@ -142,7 +142,7 @@ export default function Header() {
               >
                 <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.15)] transition transform group-hover:scale-110">
                   <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition" />
-                  <TbFileCv className="text-xl text-emerald-400 group-hover:text-emerald-300 transition" />
+                  <TbFileCv className="text-xl text-cyan-400 group-hover:text-cyan-300 transition" />
                 </div>
                 <span className="text-xs text-gray-400 group-hover:text-gray-300 transition">
                   Descargar CV
