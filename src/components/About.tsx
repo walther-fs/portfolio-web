@@ -77,7 +77,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-[100vh] w-full bg-gradient-to-b from-stone-900 via-gray-950 to-black flex items-center px-6 md:px-12 py-20"
+      className="min-h-[100vh] w-full overflow-x-hidden bg-gradient-to-b from-stone-900 via-gray-950 to-black flex items-center px-6 md:px-12 py-20"
       aria-labelledby="about-title"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -156,7 +156,7 @@ export default function About() {
                 Mis Habilidades
               </h3>
               <ul
-                className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px"
                 role="list"
               >
                 {skills.map(({ Icon, name, iconClass }, idx) => (
