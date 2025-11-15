@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { GiSharpSmile } from "react-icons/gi";
 import { FaWhatsapp } from "react-icons/fa6";
+import { TbFileCv } from "react-icons/tb";
 import { HiOutlineMail } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useActiveSection } from "../hooks/useActiveSection";
@@ -132,16 +133,22 @@ export default function Header() {
                   Email
                 </span>
               </a>
+              <a
+                href="/CV-Walther-Flores.pdf"
+                download
+                onClick={toggleMenu}
+                aria-label="Descargar currículum"
+                className="group flex flex-col items-center gap-2 mb-6"
+              >
+                <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.15)] transition transform group-hover:scale-110">
+                  <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition" />
+                  <TbFileCv className="text-xl text-emerald-400 group-hover:text-emerald-300 transition" />
+                </div>
+                <span className="text-xs text-gray-400 group-hover:text-gray-300 transition">
+                  Descargar CV
+                </span>
+              </a>
             </div>
-            <a
-              href="/CV-Walther-Flores.pdf"
-              download
-              onClick={toggleMenu}
-              aria-label="Descargar currículum de Walther Flores en PDF"
-              className="block bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 text-white px-4 py-3 rounded-lg shadow-lg text-center mx-6 mb-6 hover:shadow-[0_0_10px_4px_rgba(6,182,212,0.6),0_0_20px_6px_rgba(16,185,129,0.5)] transition transform hover:scale-105 animate-pulse-slow"
-            >
-              Descargar CV
-            </a>
           </motion.div>
         )}
       </AnimatePresence>
