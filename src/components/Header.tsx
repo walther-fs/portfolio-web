@@ -109,16 +109,12 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
           >
-            {/* Título */}
             <p className="text-center text-gray-300 font-medium tracking-wide mt-4">
               Contáctame
             </p>
-
-            {/* ÍCONOS CON TEXTO */}
             <div className="flex justify-center gap-10 p-8">
-              {/* WhatsApp */}
               <a
-                href="https://wa.me/51XXXXXXXXX"
+                href="https://wa.me/51987390474"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={toggleMenu}
@@ -138,10 +134,8 @@ export default function Header() {
                   WhatsApp
                 </span>
               </a>
-
-              {/* Email */}
               <a
-                href="mailto:tuemail@example.com"
+                href="mailto:Walther.fs4@gmail.com"
                 onClick={toggleMenu}
                 aria-label="Enviar correo"
                 className="group flex flex-col items-center gap-2"

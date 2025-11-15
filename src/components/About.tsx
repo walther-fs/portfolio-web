@@ -19,7 +19,6 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
-
 const skills = [
   { Icon: SiHtml5, name: "HTML5", iconClass: "text-orange-500" },
   { Icon: SiCss3, name: "CSS3", iconClass: "text-blue-500" },
@@ -34,7 +33,6 @@ const skills = [
   { Icon: DiMsqlServer, name: "SQL Server", iconClass: "text-red-600" },
   { Icon: SiGit, name: "Git", iconClass: "text-orange-500" },
 ];
-
 const faqs = [
   {
     question: "¿Qué experiencia tienes con otros frameworks?",
@@ -67,10 +65,8 @@ const faqs = [
       "Por supuesto, me adapto rápido y me motiva aprender frameworks, librerías o herramientas que sumen al equipo y al proyecto.",
   },
 ];
-
 export default function About() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
   const toggle = (idx: number) => {
     setActiveIndex((current) => (current === idx ? null : idx));
   };

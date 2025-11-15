@@ -10,7 +10,7 @@ import {
   ListboxOption,
 } from "@headlessui/react";
 import toast from "react-hot-toast";
-
+const errorPosition = window.innerWidth <= 769 ? "top-center" : "bottom-center";
 const subjects = ["Asunto", "Oferta de trabajo", "Consulta", "Otro"];
 
 export default function Contact() {
@@ -26,24 +26,30 @@ export default function Contact() {
     const email = form.current.from_email.value.trim();
     const messageValue = message.trim();
     if (!name) {
-      toast.error("Por favor, ingresa tu nombre.");
+      toast.error("Por favor, ingresa tu nombre.", { position: errorPosition });
       return;
     }
     if (!email) {
-      toast.error("Por favor, ingresa tu correo electrónico.");
+      toast.error("Por favor, ingresa tu correo electrónico.", {
+        position: errorPosition,
+      });
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      toast.error("Ingresa un correo válido.");
+      toast.error("Ingresa un correo válido.", { position: errorPosition });
       return;
     }
     if (selectedSubject === "Asunto") {
-      toast.error("Debes seleccionar un asunto antes de enviar.");
+      toast.error("Debes seleccionar un asunto antes de enviar.", {
+        position: errorPosition,
+      });
       return;
     }
     if (!messageValue) {
-      toast.error("El mensaje no puede estar vacío.");
+      toast.error("El mensaje no puede estar vacío.", {
+        position: errorPosition,
+      });
       return;
     }
     const hiddenSubject = form.current.querySelector<HTMLInputElement>(

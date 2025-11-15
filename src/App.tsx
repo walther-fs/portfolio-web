@@ -29,6 +29,7 @@ function App() {
         position="bottom-center"
         containerStyle={{ bottom: 125 }}
         toastOptions={{
+          duration: 2500,
           style: {
             background: "#1a1a1a",
             color: "#e0e0e0",
