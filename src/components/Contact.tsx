@@ -11,6 +11,7 @@ import {
 } from "@headlessui/react";
 import toast from "react-hot-toast";
 const errorPosition = window.innerWidth <= 769 ? "top-center" : "bottom-center";
+const errorOffset = window.innerWidth <= 769 ? { marginTop: "60px" } : {};
 const subjects = ["Asunto", "Oferta de trabajo", "Consulta", "Otro"];
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
@@ -24,29 +25,38 @@ export default function Contact() {
     const email = form.current.from_email.value.trim();
     const messageValue = message.trim();
     if (!name) {
-      toast.error("Por favor, ingresa tu nombre.", { position: errorPosition });
+      toast.error("Por favor, ingresa tu nombre.", {
+        position: errorPosition,
+        style: errorOffset,
+      });
       return;
     }
     if (!email) {
       toast.error("Por favor, ingresa tu correo electrónico.", {
         position: errorPosition,
+        style: errorOffset,
       });
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      toast.error("Ingresa un correo válido.", { position: errorPosition });
+      toast.error("Ingresa un correo válido.", {
+        position: errorPosition,
+        style: errorOffset,
+      });
       return;
     }
     if (selectedSubject === "Asunto") {
       toast.error("Debes seleccionar un asunto antes de enviar.", {
         position: errorPosition,
+        style: errorOffset,
       });
       return;
     }
     if (!messageValue) {
       toast.error("El mensaje no puede estar vacío.", {
         position: errorPosition,
+        style: errorOffset,
       });
       return;
     }

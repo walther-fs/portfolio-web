@@ -26,9 +26,9 @@ function App() {
       <ScrollToTop />
       <Toaster
         position="bottom-center"
-        containerStyle={{ bottom: 125 }}
+        containerStyle={{ bottom: 110 }}
         toastOptions={{
-          duration: 2500,
+          duration: 5000,
           style: {
             background: "#1a1a1a",
             color: "#e0e0e0",
