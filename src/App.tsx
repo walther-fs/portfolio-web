@@ -7,7 +7,6 @@ import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
-
 function App() {
   return (
     <div className="min-h-screen flex flex-col bg-black text-gray-100">

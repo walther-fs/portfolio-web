@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import { GiSunglasses } from "react-icons/gi";
-
 export default function Hero() {
   return (
     <section
       id="hero"
-      className=" h-screen w-full flex flex-col md:flex-row items-center justify-center gap-10 px-6 md:px-12 
-                  bg-gradient-to-b from-purple-950 via-indigo-950 to-stone-900 pt-0 md:pt-0"
+      className=" h-screen w-full flex flex-col md:flex-row items-center justify-center gap-10 px-6 md:px-12 bg-gradient-to-b from-purple-950 via-indigo-950 to-stone-900 pt-0 md:pt-0"
     >
       <div className="flex flex-col md:flex-row items-center justify-between gap-10 max-w-6xl w-full mx-auto">
         <motion.div
@@ -84,8 +82,7 @@ export default function Hero() {
               href="https://github.com/walther-fs"
               target="_blank"
               rel="noopener noreferrer"
-              className=" w-full sm:w-auto text-center flex items-center gap-2 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 
-                          text-white px-6 py-3 rounded-xl shadow-lg font-semibold hover:from-purple-500 hover:via-violet-500 hover:to-indigo-500 transition-all"
+              className=" w-full sm:w-auto text-center flex items-center gap-2 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 text-white px-6 py-3 rounded-xl shadow-lg font-semibold hover:from-purple-500 hover:via-violet-500 hover:to-indigo-500 transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -96,8 +93,7 @@ export default function Hero() {
               href="https://www.linkedin.com/in/walther-fs4/"
               target="_blank"
               rel="noopener noreferrer"
-              className=" w-full sm:w-auto text-center flex items-center gap-2 border border-violet-500/60 text-violet-400 px-6 py-3 rounded-xl shadow 
-                          hover:bg-violet-500/30 hover:border-violet-400 transition-all font-medium"
+              className=" w-full sm:w-auto text-center flex items-center gap-2 border border-violet-500/60 text-violet-400 px-6 py-3 rounded-xl shadow hover:bg-violet-500/30 hover:border-violet-400 transition-all font-medium"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

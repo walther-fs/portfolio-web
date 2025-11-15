@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
 import hero from "../assets/portfolio/hero.webp";
 import about from "../assets/portfolio/about.webp";
 import contact from "../assets/portfolio/contact.webp";
-
 import tm1 from "../assets/task-manager/tm-1.webp";
 import tm2 from "../assets/task-manager/tm-2.webp";
 import tm3 from "../assets/task-manager/tm-3.webp";
 import tm4 from "../assets/task-manager/tm-4.webp";
 import tm5 from "../assets/task-manager/tm-5.webp";
 import tm6 from "../assets/task-manager/tm-6.webp";
-
 interface Project {
   title: string;
   description: string;
@@ -21,7 +18,6 @@ interface Project {
   current: boolean;
   images: string[];
 }
-
 const projects: Project[] = [
   {
     title: "Portfolio Personal",
@@ -53,7 +49,6 @@ const projects: Project[] = [
     images: [],
   },
 ];
-
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -61,7 +56,6 @@ const container = {
     transition: { staggerChildren: 0.25 },
   },
 };
-
 const item = {
   hidden: { opacity: 0, scale: 0.9, y: 30 },
   show: {
@@ -76,26 +70,17 @@ const item = {
     },
   },
 };
-
 function ProjectCard({ proj }: { proj: Project }) {
   const [index, setIndex] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % proj.images.length);
     }, 3000);
     return () => clearInterval(interval);
   }, [proj.images.length]);
-
   return (
     <motion.div
-      className=" bg-gradient-to-br from-gray-900 to-gray-800 
-                  border border-teal-500/30 shadow-lg rounded-xl 
-                  overflow-hidden flex flex-col 
-                  hover:-translate-y-2 
-                  hover:border-teal-400 
-                  hover:shadow-[0_0_35px_rgba(20,184,166,0.7)]
-                  transition relative"
+      className="bg-gradient-to-br from-gray-900 to-gray-800 border border-teal-500/30 shadow-lg rounded-xl overflow-hidden flex flex-col hover:-translate-y-2 hover:border-teal-400 hover:shadow-[0_0_35px_rgba(20,184,166,0.7)] transition relative"
       variants={item}
     >
       {proj.images.length > 0 && (
@@ -119,11 +104,7 @@ function ProjectCard({ proj }: { proj: Project }) {
       )}
       <div className="flex-[2] p-6 flex flex-col justify-between relative">
         {proj.current && (
-          <span
-            className=" absolute top-4 right-4 
-                        bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 
-                        text-white text-xs px-3 py-1 rounded-full shadow animate-pulse"
-          >
+          <span className="absolute top-4 right-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white text-xs px-3 py-1 rounded-full shadow animate-pulse">
             Estás viendo este
           </span>
         )}
@@ -136,10 +117,7 @@ function ProjectCard({ proj }: { proj: Project }) {
             {proj.tech.map((t, idx) => (
               <span
                 key={idx}
-                className=" bg-gradient-to-r from-emerald-600/20 via-teal-600/20 to-cyan-600/20 
-                            text-teal-300 text-sm px-3 py-1 rounded-full 
-                            border border-teal-500/30
-                            hover:bg-teal-600/30 hover:scale-105 transition"
+                className="bg-gradient-to-r from-emerald-600/20 via-teal-600/20 to-cyan-600/20 text-teal-300 text-sm px-3 py-1 rounded-full border border-teal-500/30 hover:bg-teal-600/30 hover:scale-105 transition"
               >
                 {t}
               </span>
@@ -168,7 +146,6 @@ function ProjectCard({ proj }: { proj: Project }) {
     </motion.div>
   );
 }
-
 export default function Projects() {
   return (
     <section
@@ -176,9 +153,7 @@ export default function Projects() {
       className="min-h-screen flex flex-col justify-center py-20 px-6 md:px-12 bg-gradient-to-b from-teal-950 via-cyan-900 to-black"
     >
       <motion.h2
-        className=" text-3xl md:text-4xl font-bold mb-12 text-center 
-                    bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 
-                    bg-clip-text text-transparent"
+        className=" text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent"
         style={{ textShadow: "0 0 15px rgba(6,182,212,0.5)" }}
         initial={{ opacity: 0, y: -40, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}

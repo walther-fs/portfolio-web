@@ -12,13 +12,11 @@ import {
 import toast from "react-hot-toast";
 const errorPosition = window.innerWidth <= 769 ? "top-center" : "bottom-center";
 const subjects = ["Asunto", "Oferta de trabajo", "Consulta", "Otro"];
-
 export default function Contact() {
   const form = useRef<HTMLFormElement>(null);
   const [selectedSubject, setSelectedSubject] = useState(subjects[0]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.current) return;
@@ -100,7 +98,7 @@ export default function Contact() {
               </div>
             ),
             {
-              position: "top-center", // 🔥 solo este toast sube arriba
+              position: "top-center",
             }
           );
           form.current?.reset();
@@ -113,7 +111,6 @@ export default function Contact() {
         .finally(() => setLoading(false));
     }
   };
-
   return (
     <section
       id="contact"
@@ -153,8 +150,7 @@ export default function Contact() {
             placeholder="Nombre completo"
             required
             autoComplete="name"
-            className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 
-                        focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
+            className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
           />
           <label htmlFor="from_email" className="sr-only">
             Correo electrónico
@@ -166,8 +162,7 @@ export default function Contact() {
             placeholder="Correo"
             required
             autoComplete="email"
-            className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 
-                        focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
+            className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
           />
           <label htmlFor="company" className="sr-only">
             Empresa
@@ -178,8 +173,7 @@ export default function Contact() {
             name="company"
             placeholder="Empresa (opcional)"
             autoComplete="organization"
-            className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 
-                        focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
+            className=" w-full border-b border-gray-600 bg-transparent py-3 text-sm text-gray-200 focus:outline-none focus:border-gray-400 focus:ring-0 transition placeholder-gray-400"
           />
           <div>
             <label htmlFor="subject" className="sr-only">
@@ -189,9 +183,7 @@ export default function Contact() {
               <div className="relative">
                 <ListboxButton
                   id="subject"
-                  className=" relative w-full cursor-pointer rounded-md border border-gray-700 
-                              bg-gray-900/40 text-gray-200 py-2.5 pl-3 pr-10 text-left text-sm 
-                              shadow-sm focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+                  className=" relative w-full cursor-pointer rounded-md border border-gray-700 bg-gray-900/40 text-gray-200 py-2.5 pl-3 pr-10 text-left text-sm shadow-sm focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
                 >
                   <span className="block truncate">{selectedSubject}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -206,11 +198,7 @@ export default function Contact() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <ListboxOptions
-                    className="absolute mt-1 max-h-60 w-full overflow-auto 
-                              rounded-md bg-gray-900/95 shadow-lg ring-1 ring-cyan-400/40 
-                              focus:outline-none text-sm z-10 text-gray-200"
-                  >
+                  <ListboxOptions className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-gray-900/95 shadow-lg ring-1 ring-cyan-400/40 focus:outline-none text-sm z-10 text-gray-200">
                     {subjects.map((subject, idx) => (
                       <ListboxOption
                         key={idx}
@@ -266,9 +254,7 @@ export default function Contact() {
               maxLength={1000}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-full border border-gray-700 rounded-md bg-transparent p-3 text-sm text-gray-200
-                        focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 
-                        resize-none transition placeholder-gray-400"
+              className="w-full border border-gray-700 rounded-md bg-transparent p-3 text-sm text-gray-200 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 resize-none transition placeholder-gray-400"
             ></textarea>
             <p
               className="text-xs text-gray-400 text-right mt-1"

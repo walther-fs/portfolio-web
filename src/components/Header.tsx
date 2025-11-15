@@ -5,11 +5,9 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useActiveSection } from "../hooks/useActiveSection";
-
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
-
   const links = [
     { id: "hero", label: "Inicio" },
     { id: "about", label: "Sobre mí" },
@@ -17,16 +15,10 @@ export default function Header() {
     { id: "projects", label: "Proyectos" },
     { id: "contact", label: "Contacto" },
   ];
-
   const active = useActiveSection(links.map((l) => l.id));
-
   return (
     <header
-      className="fixed top-0 left-0 w-full 
-                  bg-zinc-950/70 backdrop-blur-md 
-                  border-b border-transparent 
-                  [border-image:linear-gradient(to_right,#7c3aed,#06b6d4,#8b5cf6)1] 
-                  shadow z-50"
+      className="fixed top-0 left-0 w-full bg-zinc-950/70 backdrop-blur-md border-b border-transparent [border-image:linear-gradient(to_right,#7c3aed,#06b6d4,#8b5cf6)1] shadow z-50"
       role="banner"
     >
       <nav
@@ -83,10 +75,7 @@ export default function Header() {
           href="/CV-Walther-Flores.pdf"
           download
           aria-label="Descargar currículum de Walther Flores en PDF"
-          className="hidden md:block bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 
-                      text-white px-4 py-2 rounded-lg shadow-lg 
-                      hover:shadow-[0_0_10px_4px_rgba(6,182,212,0.6),0_0_20px_6px_rgba(16,185,129,0.5)] 
-                      transition transform hover:scale-105 animate-pulse-slow"
+          className="hidden md:block bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-[0_0_10px_4px_rgba(6,182,212,0.6),0_0_20px_6px_rgba(16,185,129,0.5)] transition transform hover:scale-105 animate-pulse-slow"
         >
           Descargar CV
         </a>
@@ -121,12 +110,7 @@ export default function Header() {
                 aria-label="Ir a WhatsApp"
                 className="group flex flex-col items-center gap-2"
               >
-                <div
-                  className="relative flex items-center justify-center w-12 h-12 
-                   rounded-xl bg-white/5 backdrop-blur-md border border-cyan-500/20
-                   shadow-[0_0_10px_rgba(6,182,212,0.15)]
-                   transition transform group-hover:scale-110"
-                >
+                <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md border border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.15)] transition transform group-hover:scale-110">
                   <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 opacity-0 group-hover:opacity-100 transition" />
                   <FaWhatsapp className="text-xl text-cyan-400 group-hover:text-cyan-300 transition" />
                 </div>
@@ -140,12 +124,7 @@ export default function Header() {
                 aria-label="Enviar correo"
                 className="group flex flex-col items-center gap-2"
               >
-                <div
-                  className="relative flex items-center justify-center w-12 h-12 
-                   rounded-xl bg-white/5 backdrop-blur-md border border-violet-500/20
-                   shadow-[0_0_10px_rgba(139,92,246,0.15)]
-                   transition transform group-hover:scale-110"
-                >
+                <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 backdrop-blur-md border border-violet-500/20 shadow-[0_0_10px_rgba(139,92,246,0.15)] transition transform group-hover:scale-110">
                   <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition" />
                   <HiOutlineMail className="text-xl text-violet-400 group-hover:text-violet-300 transition" />
                 </div>
@@ -154,17 +133,12 @@ export default function Header() {
                 </span>
               </a>
             </div>
-
-            {/* BOTÓN DESCARGAR CV */}
             <a
               href="/CV-Walther-Flores.pdf"
               download
               onClick={toggleMenu}
               aria-label="Descargar currículum de Walther Flores en PDF"
-              className="block bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 
-               text-white px-4 py-3 rounded-lg shadow-lg text-center mx-6 mb-6 
-               hover:shadow-[0_0_10px_4px_rgba(6,182,212,0.6),0_0_20px_6px_rgba(16,185,129,0.5)] 
-               transition transform hover:scale-105 animate-pulse-slow"
+              className="block bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 text-white px-4 py-3 rounded-lg shadow-lg text-center mx-6 mb-6 hover:shadow-[0_0_10px_4px_rgba(6,182,212,0.6),0_0_20px_6px_rgba(16,185,129,0.5)] transition transform hover:scale-105 animate-pulse-slow"
             >
               Descargar CV
             </a>
