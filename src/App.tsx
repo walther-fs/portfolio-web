@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
+const isMobile = window.innerWidth <= 769;
 function App() {
   return (
     <div className="min-h-screen flex flex-col bg-black text-gray-100">
@@ -25,8 +26,9 @@ function App() {
       <Footer />
       <ScrollToTop />
       <Toaster
-        position="bottom-center"
-        containerStyle={{ bottom: 110 }}
+        position={isMobile ? "top-center" : "bottom-center"}
+        reverseOrder={isMobile}
+        containerStyle={isMobile ? { top: 60 } : { bottom: 110 }}
         toastOptions={{
           duration: 5000,
           style: {
